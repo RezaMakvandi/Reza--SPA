@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div id="HomeIndex_BgDiv"></div>
+</div>
+
+
+
+<div id="example1">
+    <div id="HomeIndex_BgTitleMsg">
+        <h3 style="font-weight:900">SPA WEB APP</h3>
+        <p>WITH ASP.NET CORE MVC</p>
+    </div>
+
+
+
+</div>
+
+
+<style>
+    #HomeIndex_BgDiv {
+        background-image: url(../Images/bg.jpg);
+        background-size: auto; /* <------ */
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    #example1 {
+        padding: 25px;
+        background: url(../Images/4.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 300px;
+        max-height: 60vh;
+        min-height: 60vh;
+        background-position: center top;
+        position: relative;
+        z-index: -1;
+    }
+
+    .mb-3 {
+        margin-bottom: 0 !important
+    }
+
+    #HomeIndex_BgTitleMsg {
+        text-align: center;
+        margin-top: 18vh;
+        color: white;
+        text-shadow: 3px 3px 3px #ababab;
+    }
+
+    .navbar {
+        background-color: #77cff5 !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+
+    .nav-item:hover {
+        background-color: #a4def7;
+    }
+
+    .nav-item > a {
+        color: #777777 !important;
+    }
+
+        .nav-item > a:hover {
+            color: white !important;
+        }
+
+    #HomeIndex_OroujImg {
+        max-width: 77%;
+        opacity: 0.9;
+        transform: perspective(821px) rotateY(-8deg);
+        box-shadow: 3px 2px 5px #c1c1c1;
+        border: 5px solid #f6f6f6;
+    }
+
+
+</style>
+
+
+

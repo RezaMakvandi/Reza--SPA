@@ -1,0 +1,106 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import url("../fonts/Vazir-FDNew.ttf");
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: "Vazir-FDNew";
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: "Vazir-FDNew";
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+@font-face {
+    font-family: 'Vazir-FDNew';
+    src: url('../fonts/Vazir-FDNew.eot?#') format('eot'), /* IE6?8 */ /*url('../fonts/Vazir-FDNew.woff') format('woff'),*/ /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir-FDNew.ttf') format('truetype'); /* Saf3?5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+input {
+    border: 1px solid #eaeaea;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #cfcfcf;
+}
+/* WebKit, Blink, Edge */
+.form-control:-moz-placeholder {
+    color: #cfcfcf;
+}
+/* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder {
+    color: #cfcfcf;
+}
+/* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder {
+    color: #cfcfcf;
+}
+/* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder {
+    color: #cfcfcf;
+}
+/* Microsoft Edge */
+
+.row{
+    margin:0;
+}

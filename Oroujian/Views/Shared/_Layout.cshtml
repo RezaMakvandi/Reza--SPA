@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Reza SPA</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/Fontawsome/all.min.css?ver=20200711" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Reza SPA</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a href="/Home/Index" class="nav-link text-dark" data-ajax-begin="MySideBar_OnMenuBegin" data-ajax-success="MySideBar_OnMenuSuccess" data-ajax="true" data-ajax-method="Get">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Home/Privacy" class="nav-link text-dark" data-ajax-begin="MySideBar_OnMenuBegin" data-ajax-success="MySideBar_OnMenuSuccess" data-ajax="true" data-ajax-method="Get">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Home/AboutUs" class="nav-link text-dark" data-ajax-begin="MySideBar_OnMenuBegin" data-ajax-success="MySideBar_OnMenuSuccess" data-ajax="true" data-ajax-method="Get">About Us</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <script>
+            var MySideBar_BackOrForwardClicked = false;
+            window.addEventListener('popstate', function (event) {
+                MySideBar_BackOrForwardClicked = true;
+                var path = window.location.pathname;
+                $("body").append(`
+                <a id="MySideBar_DynamicHistoryLink" class="SideBarALinks MySideBar_MenuLinks" data-ajax="true" data-ajax-begin="MySideBar_OnMenuBegin" data-ajax-method="Get" data-ajax-success="MySideBar_OnMenuSuccess" href=${path} style="border-bottom: 1px solid rgba(78, 78, 78, 0.09); margin-top: -15px; color: rgb(54, 33, 0);"></a>
+            `);
+                $("#MySideBar_DynamicHistoryLink").trigger("click");
+                $("#MySideBar_DynamicHistoryLink").remove();
+
+            });
+          
+            function MySideBar_OnMenuBegin(e) {
+                debugger;
+                if (MySideBar_BackOrForwardClicked === false) {
+                    MySideBar_ClickedLinkPath = this.pathname;
+                    MySideBar_ClickedLinkText = this.text;
+                }
+
+                //NProgress.start();
+                //NProgress.inc()
+                //if (MySideBar_LockOnMenuClick === "false") {
+                //    SideBarCloseNav(false);
+                //}
+            }
+
+            function MySideBar_OnMenuSuccess(data) {
+                if (typeof (data.Result) !== 'undefined') {
+                    $('#My_Mainstatus').prepend('<div class="alert alert-danger alert-dismissible" > <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + data.Msg + '</div>')
+                }
+                else if ($("#MySideBar_MainContentForAll").length) {
+                    if (MySideBar_BackOrForwardClicked === false) {
+                        window.history.pushState({}, MySideBar_ClickedLinkPath, MySideBar_ClickedLinkPath);
+                    }
+                    MySideBar_BackOrForwardClicked = false;
+                    
+                    $(document).prop("title", MySideBar_ClickedLinkText)
+                    $("#MySideBar_MainContentForAll").empty();
+                    $("#MySideBar_MainContentForAll").html(data);
+                }
+                else {
+                    window.location.href = "/Home/Index";
+                }
+            }
+        </script>
+
+    </header>
+    <div>
+        <main id="MySideBar_MainContentForAll" role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Reza SPA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+
+</body>
+</html>
